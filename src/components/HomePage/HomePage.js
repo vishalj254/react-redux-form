@@ -1,9 +1,24 @@
 import React,{useState} from 'react';
-import AddCompany from '../AddCompany';
-import CreatePerson from '../CreatePerson';
-import DisplayCompany from '../DisplayCompany'
-import { Grid } from '@material-ui/core';
+import AddCompany from '../Company/AddCompany';
+import CreatePerson from '../Employee/CreatePerson';
+import DisplayCompany from '../Company/DisplayCompany'
+import { Grid,Link,Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
+import Header from '../Header/Header'
+
+function Copyright() {
+    return (
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="">
+          Gautam Ojha
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
+
 export default function HomePage(){
     const [refresh, setrefresh] = useState(true)
     const [view, setview] = useState('')
@@ -18,6 +33,7 @@ export default function HomePage(){
 
     return(
         <div>
+            <Header changeView={changeView} />
             {view==''?<Container maxWidth="lg">
             <div>
              <Grid container>
@@ -31,6 +47,10 @@ export default function HomePage(){
             </Grid>
             </div>
         </Container>:view}
+        <div style={{margin:20}} >
+            <Copyright />
+        </div>
+        
         </div>
           
     )
